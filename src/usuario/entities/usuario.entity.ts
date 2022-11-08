@@ -9,16 +9,18 @@ export class Usuarios {
    
    @PrimaryGeneratedColumn()
    id: number
+  
    @ApiProperty()
    @IsNotEmpty()
    @Column({length: 255, nullable: false})
    nome: string
 
-   @ApiProperty()
    @IsEmail()
    @Column({length: 255, nullable: false})
+   @ApiProperty({example: "Email@email.com.br"})
     usuario: string
-
+    
+    @ApiProperty()
    @IsNotEmpty()
    @MinLength(8)
    @Column({length: 255, nullable: false})

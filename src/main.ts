@@ -9,7 +9,7 @@ async function bootstrap() {
 
   .setTitle('BlogPessoal')
   .setDescription('BlogPessoal')
-  .setContact('Generation Brasil', 'www.genbr.com.br', 'liza@gmail.com')
+  .setContact('Generation Brasil', 'www.genbr.com.br', 'layonaraujo-silva@hotmail.com')
   .setVersion('1.0')
   .addBearerAuth()
   .build()
@@ -20,6 +20,6 @@ async function bootstrap() {
   process.env.TZ = '-03:00'
   app.useGlobalPipes( new ValidationPipe())
   app.enableCors()
-  await app.listen(4000);
+  await app.listen( process.env.PORT || 4000);
 }
 bootstrap();

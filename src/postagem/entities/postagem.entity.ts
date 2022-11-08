@@ -2,10 +2,11 @@ import { IsNotEmpty, MaxLength } from "class-validator";
 import { Tema } from "../../tema/entities/tema.entity";
 import { Usuarios } from "../../usuario/entities/usuario.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { ApiProperty } from "@nestjs/swagger";
 
 @Entity ({name:"tb_postagens"})
 export class Postagem{
-    
+   
     @PrimaryGeneratedColumn()
     id: number
    
@@ -21,12 +22,14 @@ export class Postagem{
     @UpdateDateColumn()
     data: Date
 
+    @ApiProperty({type: () => Tema })
     @ManyToOne(() => Tema, (tema) => tema.postagem, {
         onDelete: "CASCADE"
     })
 
         tema: Tema
 
+        @ApiProperty({type: () => Usuarios })
         @ManyToOne (() => Usuarios, (usuarios) => usuarios.postagem, {
             onDelete: "CASCADE"
         })
